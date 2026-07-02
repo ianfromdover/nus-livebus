@@ -36,9 +36,7 @@
 				onclick={() => onSelect(key)}
 				aria-pressed={active}
 				class="rounded-full px-3.5 py-1.5 font-mono text-sm font-bold transition-all
-					{active
-					? 'shadow-card'
-					: 'border border-border bg-surface text-ink-soft hover:bg-surface-2'}"
+					{active ? 'shadow-card' : 'border border-border bg-surface text-ink-soft hover:bg-surface-2'}"
 				style={active ? `background: ${routeColor(key)}; color: ${routeTextColor(key)}` : ''}
 			>
 				{key}
@@ -63,7 +61,8 @@
 						class="flex items-center gap-2.5 px-3.5 py-3 transition-colors hover:bg-surface-2"
 					>
 						<span class="shrink-0 text-muted"><Icon name="bus" size={16} /></span>
-						<span class="min-w-0 flex-1 truncate text-[14px] font-medium text-ink">{stop.name}</span>
+						<span class="min-w-0 flex-1 truncate text-[14px] font-medium text-ink">{stop.name}</span
+						>
 						<span class="shrink-0 text-muted"><Icon name="chevron" size={15} /></span>
 					</a>
 				</li>
