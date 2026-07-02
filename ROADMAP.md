@@ -15,6 +15,14 @@ external factors sit in **KIV** with a pointer to their write-up.
 | 6   | First / Last bus table on every route                                                                                                    | Routes tab              | Weekday / Saturday / Sunday & PH columns, researched from Land Transport Guru + SgWiki (post-Jan-2026 revamp), cross-checked to the minute.                                                                              |
 | 7   | Starring is a star (not a bookmark) and is instant                                                                                       | stop page, starred page | Star/unstar toggles optimistically; the form action no longer re-runs every load function (which re-fetched live timings upstream — the perf bug).                                                                       |
 
+### Added after the first iteration
+
+- Map controls: zoom buttons removed; recentre-on-user button; bare crosshair reticle; drawer-drag geo-lock (map pans with the sheet so the crosshair keeps its spot).
+- Settings page (`/settings`, gear on the home map + column headers): dark-mode switch, UI-size control, location switch — all cookie-persisted and applied server-side (no flash).
+- UI size: 5 steps (100-160%). Research-calibrated for presbyopia — 18px+ body text recommended for 50+ eyes (NN/g, APH large-print ≥18pt, PMC systematic review 14-18pt optimal); step 2 puts 15px body text at 19.5px, step 4 at 24px (true large print). The two largest steps hide minor details (vehicle plates, the Starred label) to keep rows scannable.
+- Page zoom locked at 100% (viewport meta + touch-action) — pinch always goes to the map.
+- Location decision persists (`locpref` cookie): auto-locates on return visits, the banner gained a left-edge dismiss button (dismissal persists), and settings has an enable-location switch.
+
 ## KIV (blocked on data)
 
 | Feature                                                                          | Blocker                                                     | Write-up                                                 |
