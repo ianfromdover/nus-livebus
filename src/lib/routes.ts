@@ -18,7 +18,10 @@ const ROUTE_COLORS: Record<string, { bg: string; fg: string }> = {
 const FALLBACK = { bg: '#5566c4', fg: '#FFFFFF' };
 
 export function baseRoute(name: string): string {
-	return name.replace(/^PUB[: ]/, '').split(':')[0].trim();
+	return name
+		.replace(/^PUB[: ]/, '')
+		.split(':')[0]
+		.trim();
 }
 
 export function routeColor(name: string): string {
