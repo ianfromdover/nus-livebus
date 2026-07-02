@@ -23,6 +23,8 @@ external factors sit in **KIV** with a pointer to their write-up.
 - Page zoom locked at 100% (viewport meta + touch-action) — pinch always goes to the map.
 - Location decision persists (`locpref` cookie): auto-locates on return visits, the banner gained a left-edge dismiss button (dismissal persists), and settings has an enable-location switch.
 
+- Route lines follow the roads: geometry is OSRM-snapped offline (`scripts/fetch_route_shapes.py` → `routeShapes.json`, 27 KB for all 8 routes). Lines are offset to the right of the travel direction so out-and-back roads and roundabout re-crossings render as two distinguishable parallel lines, and the direction arrows are baked in the route's colour with the line's white casing so they read as arrowheads of the line itself.
+
 ## KIV (blocked on data)
 
 | Feature                                                                          | Blocker                                                     | Write-up                                                 |
