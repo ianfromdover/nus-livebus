@@ -12,6 +12,19 @@
 	// Stops in travel order; drop the seq:32767 loop-back duplicate of the origin.
 	const stops = $derived(routeStops(selected).filter((s) => s.seq !== 32767));
 	const schedule = $derived(schedules[selected]);
+
+	// Footnote: call out no-service days and terminal/notes, when present.
+	const footnote = $derived.by(() => {
+		if (!schedule) return '';
+		const noServiceDays: string[] = [];
+		if (schedule.saturday.noService) noServiceDays.push('Sat');
+		if (schedule.sundayPh.noService) noServiceDays.push('Sun & PH');
+		const parts: string[] = [];
+		if (noServiceDays.length) parts.push(`No service on ${noServiceDays.join(', ')}.`);
+		if (schedule.terminal) parts.push(`Times are departures from ${schedule.terminal}.`);
+		if (schedule.notes) parts.push(schedule.notes);
+		return parts.join(' ');
+	});
 </script>
 
 <div class="space-y-4">
@@ -23,9 +36,7 @@
 				onclick={() => onSelect(key)}
 				aria-pressed={active}
 				class="rounded-full px-3.5 py-1.5 font-mono text-sm font-bold transition-all
-					{active
-					? 'shadow-card'
-					: 'border border-border bg-surface text-ink-soft hover:bg-surface-2'}"
+					{active ? 'shadow-card' : 'border border-border bg-surface text-ink-soft hover:bg-surface-2'}"
 				style={active ? `background: ${routeColor(key)}; color: ${routeTextColor(key)}` : ''}
 			>
 				{key}
@@ -50,7 +61,8 @@
 						class="flex items-center gap-2.5 px-3.5 py-3 transition-colors hover:bg-surface-2"
 					>
 						<span class="shrink-0 text-muted"><Icon name="bus" size={16} /></span>
-						<span class="min-w-0 flex-1 truncate text-[14px] font-medium text-ink">{stop.name}</span>
+						<span class="min-w-0 flex-1 truncate text-[14px] font-medium text-ink">{stop.name}</span
+						>
 						<span class="shrink-0 text-muted"><Icon name="chevron" size={15} /></span>
 					</a>
 				</li>
@@ -61,27 +73,43 @@
 	<!-- first / last bus (hidden when no schedule data for this route) -->
 	{#if schedule}
 		<div class="overflow-hidden rounded-2xl border border-border bg-surface shadow-card">
-			<table class="w-full text-sm">
-				<thead>
-					<tr class="border-b border-border text-xs uppercase tracking-wide text-muted">
-						<th class="px-3.5 py-2.5 text-left font-semibold" aria-label="Service"></th>
-						<th class="px-3.5 py-2.5 text-right font-semibold">Weekdays</th>
-						<th class="px-3.5 py-2.5 text-right font-semibold">Wknd / PH</th>
-					</tr>
-				</thead>
-				<tbody class="tabular-nums">
-					<tr class="border-b border-border">
-						<td class="px-3.5 py-2.5 font-medium text-ink-soft">First bus</td>
-						<td class="px-3.5 py-2.5 text-right text-ink">{schedule.weekday.first}</td>
-						<td class="px-3.5 py-2.5 text-right text-ink">{schedule.weekend.first}</td>
-					</tr>
-					<tr>
-						<td class="px-3.5 py-2.5 font-medium text-ink-soft">Last bus</td>
-						<td class="px-3.5 py-2.5 text-right text-ink">{schedule.weekday.last}</td>
-						<td class="px-3.5 py-2.5 text-right text-ink">{schedule.weekend.last}</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="overflow-x-auto">
+				<table class="w-full whitespace-nowrap text-[13px]">
+					<thead>
+						<tr class="border-b border-border text-xs uppercase tracking-wide text-muted">
+							<th class="px-3.5 py-2 text-left font-semibold" aria-label="Service"></th>
+							<th class="px-2.5 py-2 text-right font-semibold">Weekdays</th>
+							<th class="px-2.5 py-2 text-right font-semibold">Sat</th>
+							<th class="px-2.5 py-2 text-right font-semibold">Sun & PH</th>
+						</tr>
+					</thead>
+					<tbody class="tabular-nums">
+						<tr class="border-b border-border">
+							<td class="px-3.5 py-2.5 font-medium text-ink-soft">First bus</td>
+							<td class="px-2.5 py-2.5 text-right text-ink">{schedule.weekday.first ?? '–'}</td>
+							<td class="px-2.5 py-2.5 text-right text-ink">
+								{schedule.saturday.noService ? '–' : schedule.saturday.first}
+							</td>
+							<td class="px-2.5 py-2.5 text-right text-ink">
+								{schedule.sundayPh.noService ? '–' : schedule.sundayPh.first}
+							</td>
+						</tr>
+						<tr>
+							<td class="px-3.5 py-2.5 font-medium text-ink-soft">Last bus</td>
+							<td class="px-2.5 py-2.5 text-right text-ink">{schedule.weekday.last ?? '–'}</td>
+							<td class="px-2.5 py-2.5 text-right text-ink">
+								{schedule.saturday.noService ? '–' : schedule.saturday.last}
+							</td>
+							<td class="px-2.5 py-2.5 text-right text-ink">
+								{schedule.sundayPh.noService ? '–' : schedule.sundayPh.last}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			{#if footnote}
+				<p class="border-t border-border px-3.5 py-2 text-[11px] text-muted">{footnote}</p>
+			{/if}
 		</div>
 	{/if}
 </div>
