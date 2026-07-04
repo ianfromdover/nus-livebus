@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"></head>
+<body>
+<div class="card">
+  <header>
+    <span class="opt">Option 2</span>
+    <h1>Route Chip — floating "bus + D2" pill anchored to a dot</h1>
+    <p>Inspired by Moovit's live-vehicle labels and Citymapper's route pills</p>
+  </header>
+  <div class="stage">
+    <div class="mapwrap">
+      <svg class="map" viewBox="0 0 640 560" preserveAspectRatio="xMidYMid slice">
+        <rect width="640" height="560" fill="#EDEAE2"/>
+        <rect x="380" y="40" width="230" height="160" rx="18" fill="#D7E5C8"/>
+        <rect x="40" y="380" width="180" height="130" rx="12" fill="#E2DFD6"/>
+        <rect x="70" y="60" width="150" height="110" rx="10" fill="#E2DFD6"/>
+        <g stroke-linecap="round" fill="none">
+          <path d="M-20 300 H660" stroke="#D8D4C9" stroke-width="26"/>
+          <path d="M-20 300 H660" stroke="#FFFFFF" stroke-width="20"/>
+          <path d="M320 -20 V580" stroke="#D8D4C9" stroke-width="22"/>
+          <path d="M320 -20 V580" stroke="#FFFFFF" stroke-width="16"/>
+          <path d="M60 -20 C100 160 260 200 320 300" stroke="#D8D4C9" stroke-width="16"/>
+          <path d="M60 -20 C100 160 260 200 320 300" stroke="#FFFFFF" stroke-width="11"/>
+        </g>
+        <path d="M-20 300 H320 V580" stroke="#6E1D72" stroke-width="6" fill="none" opacity=".3" stroke-linecap="round"/>
+        <g fill="#fff" stroke="#6E1D72" stroke-width="3">
+          <circle cx="110" cy="300" r="6"/>
+          <circle cx="320" cy="450" r="6"/>
+        </g>
+        <text x="472" y="285" font-size="13" fill="#8a857b">Kent Ridge Cres</text>
+        <text x="470" y="130" font-size="13" fill="#7d9464">University Park</text>
+        <!-- marker -->
+        <g transform="translate(230,300)">
+          <circle r="13" fill="#6E1D72" opacity=".22"/>
+          <circle r="6" fill="#6E1D72" stroke="#fff" stroke-width="2.5"/>
+          <g transform="translate(0,-24)">
+            <path d="M-8 10 L0 20 L8 10 Z" fill="#6E1D72"/>
+            <rect x="-35" y="-14" width="70" height="28" rx="14" fill="#6E1D72" stroke="#fff" stroke-width="2.5"/>
+            <g transform="translate(-27,-10) scale(0.85)">
+              <path d="M12 2c-4.42 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm5.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6h-5V6h5v5z" fill="#fff"/>
+            </g>
+            <text x="12" y="5.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">D2</text>
+          </g>
+        </g>
+      </svg>
+      <span class="scalelabel">Shown at typical map zoom</span>
+    </div>
+    <div class="detail">
+      <h2>Detail · 3.5×</h2>
+      <svg width="360" height="300" viewBox="0 0 103 86">
+        <g transform="translate(51.5,58)">
+          <circle r="13" fill="#6E1D72" opacity=".22"/>
+          <circle r="6" fill="#6E1D72" stroke="#fff" stroke-width="2.5"/>
+          <g transform="translate(0,-24)">
+            <path d="M-8 10 L0 20 L8 10 Z" fill="#6E1D72"/>
+            <rect x="-35" y="-14" width="70" height="28" rx="14" fill="#6E1D72" stroke="#fff" stroke-width="2.5"/>
+            <g transform="translate(-27,-10) scale(0.85)">
+              <path d="M12 2c-4.42 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm5.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6h-5V6h5v5z" fill="#fff"/>
+            </g>
+            <text x="12" y="5.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">D2</text>
+          </g>
+        </g>
+      </svg>
+      <ul>
+        <li>Biggest, most legible "D2" of all options</li>
+        <li>Dot marks the exact GPS position; chip floats above</li>
+        <li>Familiar pattern from Moovit / Citymapper</li>
+        <li>Chip can flip above/below to avoid overlaps</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body></html>

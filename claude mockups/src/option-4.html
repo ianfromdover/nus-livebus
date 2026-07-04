@@ -1,0 +1,63 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"></head>
+<body>
+<div class="card">
+  <header>
+    <span class="opt">Option 4</span>
+    <h1>Direction Puck — solid D2 disc with travel wedge</h1>
+    <p>Inspired by OneBusAway's heading markers and navigation-app "chevron pucks"</p>
+  </header>
+  <div class="stage">
+    <div class="mapwrap">
+      <svg class="map" viewBox="0 0 640 560" preserveAspectRatio="xMidYMid slice">
+        <rect width="640" height="560" fill="#EDEAE2"/>
+        <rect x="380" y="40" width="230" height="160" rx="18" fill="#D7E5C8"/>
+        <rect x="40" y="380" width="180" height="130" rx="12" fill="#E2DFD6"/>
+        <rect x="70" y="60" width="150" height="110" rx="10" fill="#E2DFD6"/>
+        <g stroke-linecap="round" fill="none">
+          <path d="M-20 300 H660" stroke="#D8D4C9" stroke-width="26"/>
+          <path d="M-20 300 H660" stroke="#FFFFFF" stroke-width="20"/>
+          <path d="M320 -20 V580" stroke="#D8D4C9" stroke-width="22"/>
+          <path d="M320 -20 V580" stroke="#FFFFFF" stroke-width="16"/>
+          <path d="M60 -20 C100 160 260 200 320 300" stroke="#D8D4C9" stroke-width="16"/>
+          <path d="M60 -20 C100 160 260 200 320 300" stroke="#FFFFFF" stroke-width="11"/>
+        </g>
+        <path d="M-20 300 H320 V580" stroke="#6E1D72" stroke-width="6" fill="none" opacity=".3" stroke-linecap="round"/>
+        <g fill="#fff" stroke="#6E1D72" stroke-width="3">
+          <circle cx="110" cy="300" r="6"/>
+          <circle cx="320" cy="450" r="6"/>
+        </g>
+        <text x="472" y="285" font-size="13" fill="#8a857b">Kent Ridge Cres</text>
+        <text x="470" y="130" font-size="13" fill="#7d9464">University Park</text>
+        <!-- marker -->
+        <g transform="translate(230,300)">
+          <circle r="33" fill="#6E1D72" opacity=".13"/>
+          <circle r="26" fill="#6E1D72" opacity=".13"/>
+          <path d="M12 -13 L31 0 L12 13 Z" fill="#6E1D72" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle r="19" fill="#6E1D72" stroke="#fff" stroke-width="2.5"/>
+          <text y="6" text-anchor="middle" font-size="16.5" font-weight="800" fill="#fff">D2</text>
+        </g>
+      </svg>
+      <span class="scalelabel">Shown at typical map zoom</span>
+    </div>
+    <div class="detail">
+      <h2>Detail · 3.5×</h2>
+      <svg width="360" height="300" viewBox="0 0 103 86">
+        <g transform="translate(48,43)">
+          <circle r="33" fill="#6E1D72" opacity=".13"/>
+          <circle r="26" fill="#6E1D72" opacity=".13"/>
+          <path d="M12 -13 L31 0 L12 13 Z" fill="#6E1D72" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle r="19" fill="#6E1D72" stroke="#fff" stroke-width="2.5"/>
+          <text y="6" text-anchor="middle" font-size="16.5" font-weight="800" fill="#fff">D2</text>
+        </g>
+      </svg>
+      <ul>
+        <li>Route ID is the icon — no glyph needed</li>
+        <li>Wedge rotates with the bus's bearing</li>
+        <li>Double halo suggests live pulsing signal</li>
+        <li>Smallest footprint; scales well with many buses</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body></html>
